@@ -27,7 +27,7 @@ class ExpressBootstrap {
     this.httpServer = http.createServer(this.expressServer);
 
     const peerServer = ExpressPeerServer(this.expressServer, {
-      path: "/",
+      path: "/peerjs",
     });
 
     this.expressServer.use("/peerjs", peerServer);
