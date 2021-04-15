@@ -2,8 +2,6 @@ const express = require("express");
 const https = require("https");
 const fs = require("fs");
 const path = require("path");
-const { ExpressPeerServer } = require("peer");
-
 var key = fs.readFileSync(path.join(__dirname, "../../../cert/selfsigned.key"));
 var cert = fs.readFileSync(
   path.join(__dirname, "../../../cert/selfsigned.crt")
@@ -25,12 +23,6 @@ class ExpressBootstrap {
     this.expressServer.use(cors({ origin: "*" }));
     // this.httpServer = https.createServer(options, this.expressServer);
     this.httpServer = http.createServer(this.expressServer);
-
-    const peerServer = ExpressPeerServer(this.expressServer, {
-      path: "/peerjs",
-    });
-
-    this.expressServer.use("/peerjs", peerServer);
 
     this.expressServer.use("/public/uploads", express.static(uploadsBaseDir));
     //map api router
