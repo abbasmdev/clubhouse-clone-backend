@@ -1,5 +1,6 @@
 node_modules/
 .env
-public/uploads
-public/uploads/*
-!public/uploads/.keep
+public/uploads/profile-images/*
+!public/uploads/profile-images/.keep
+!public/uploads/profile-images/2.keep
+#
